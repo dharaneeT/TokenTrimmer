@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>tokentrim</title>
+    <style>
+      :root {
+        color-scheme: light dark;
+      }
+      body {
+        font-family: system-ui, sans-serif;
+        max-width: 1100px;
+        margin: 24px auto;
+        padding: 0 16px;
+        line-height: 1.4;
+      }
+      h1 {
+        font-size: 1.4rem;
+        margin-bottom: 4px;
+      }
+      h2 {
+        font-size: 1.1rem;
+        margin-top: 28px;
+      }
+      .hint {
+        opacity: 0.75;
+        margin-top: 0;
+      }
+      .cols {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+      }
+      @media (max-width: 800px) {
+        .cols {
+          grid-template-columns: 1fr;
+        }
+      }
+      label {
+        font-weight: 600;
+        display: block;
+        margin: 12px 0 4px;
+      }
+      textarea {
+        width: 100%;
+        box-sizing: border-box;
+        height: 320px;
+        font-family: Consolas, monospace;
+        font-size: 13px;
+      }
+      #question {
+        height: 60px;
+      }
+      .row {
+        display: flex;
+        gap: 12px;
+        align-items: end;
+        flex-wrap: wrap;
+        margin: 12px 0;
+      }
+      .row label {
+        margin: 0 0 4px;
+      }
+      input[type="number"] {
+        width: 110px;
+        padding: 6px;
+      }
+      button {
+        padding: 8px 16px;
+        cursor: pointer;
+      }
+      table {
+        border-collapse: collapse;
+        width: 100%;
+        margin-top: 8px;
+        font-size: 14px;
+      }
+      th,
+      td {
+        border-bottom: 1px solid rgba(128, 128, 128, 0.4);
+        padding: 4px 8px;
+        text-align: left;
+      }
+      .num {
+        text-align: right;
+      }
+      #summary {
+        font-size: 1.1rem;
+        font-weight: 600;
+        margin-top: 16px;
+      }
+      #error {
+        color: #c0392b;
+      }
+      .muted {
+        opacity: 0.75;
+        font-size: 13px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>tokentrim</h1>
+    <p class="hint">
+      Paste a long chat or text, set a token budget, and see what was removed.
+      Everything runs on this PC.
+    </p>
+
+    <div class="cols">
+      <div>
+        <label for="text"
+          >Before: paste a chat (### user / ### assistant) or plain text</label
+        >
+        <textarea id="text"></textarea>
+      </div>
+      <div>
+        <label for="output">After: shrunk result</label>
+        <textarea id="output" readonly></textarea>
+      </div>
+    </div>
+
+    <label for="question"
+      >Your latest question (kept exactly; needed only for plain text)</label
+    >
+    <textarea id="question"></textarea>
+
+    <div class="row">
+      <div>
+        <label for="budget">Token budget</label>
+        <input id="budget" type="number" value="3000" min="50" />
+      </div>
+      <button id="go">Shrink</button>
+      <button id="copy">Copy result</button>
+    </div>
+
+    <div id="error"></div>
+    <div id="summary"></div>
+    <div id="verdict" class="muted"></div>
+
+    <table id="steps">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Step</th>
+          <th class="num">Change</th>
+          <th class="num">Tokens after</th>
+          <th>Note</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+    <p class="muted">
+      Token counts are estimates made with tiktoken, not exact counts from your
+      model.
+    </p>
+
+    <section id="stats" hidden>
+      <h2>Recent runs</h2>
+      <p id="statsTotals" class="muted"></p>
+      <table id="statsTable">
+        <thead>
+          <tr>
+            <th>Run</th>
+            <th>Time (UTC)</th>
+            <th>Source</th>
+            <th class="num">Budget</th>
+            <th class="num">Before</th>
+            <th class="num">After</th>
+            <th>Status</th>
+            <th class="num">Steps</th>
+            <th class="num">ms</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </section>
+
+    <script src="/static/app.js"></script>
+  </body>
+</html>
