@@ -1,0 +1,9 @@
+[
+  { "role": "system", "content": "You are a helpful assistant." },
+  {
+    "role": "user",
+    "content": "Build log:\n\u001b[31mERROR\u001b[0m   in app.py   \n\n\n\n\n    indented line stays   \n\n\nend of log   "
+  },
+  { "role": "assistant", "content": "Looks like a missing import." },
+  { "role": "user", "content": "Fix it please." }
+]
