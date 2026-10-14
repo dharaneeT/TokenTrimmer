@@ -7,6 +7,7 @@ from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field
 
+from . import ledger
 from .agent import format_report
 from .messages import content_text, parse_text_chat
 from .runner import run_agent
@@ -63,3 +64,8 @@ def api_shrink(req: ShrinkRequest):
         "output": messages_to_text(result.messages),
         "run_id": run_id,
     }
+
+
+@app.get("/api/stats")
+def api_stats(limit: int = 10):
+    return ledger.stats(limit=max(1, min(limit, 100)))
