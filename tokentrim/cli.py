@@ -3,6 +3,7 @@ import argparse
 import sys
 from pathlib import Path
 
+from .agent import format_report
 from .messages import (
     content_text,
     load_messages,
@@ -11,6 +12,7 @@ from .messages import (
     save_messages,
     total_tokens,
 )
+from .runner import run_agent
 from .tools import TOOLS
 
 
@@ -72,6 +74,19 @@ def cmd_apply(args):
         print(f"\nSaved result to {args.out}")
 
 
+def cmd_shrink(args):
+    messages = load_messages(args.file)
+    result, run_id = run_agent(messages, args.budget, "cli")
+    print(format_report(result))
+    if run_id is not None:
+        print(f"Recorded as run #{run_id}")
+    if args.out:
+        save_messages(args.out, result.messages)
+        print(f"Saved the shrunk chat to {args.out}")
+    else:
+        print("(add --out samples\\result.json to save the shrunk chat)")
+
+
 def main(argv=None):
     if hasattr(sys.stdout, "reconfigure"):
         sys.stdout.reconfigure(encoding="utf-8", errors="replace")
@@ -95,6 +110,12 @@ def main(argv=None):
     p_apply.add_argument("--show", type=int, default=None, help="print message N before and after")
     p_apply.add_argument("--out", default=None, help="save the result to this .json file")
     p_apply.set_defaults(func=cmd_apply)
+
+    p_shrink = sub.add_parser("shrink", help="shrink a chat to a token budget")
+    p_shrink.add_argument("file", help="a chat .json file")
+    p_shrink.add_argument("--budget", type=int, required=True, help="token budget")
+    p_shrink.add_argument("--out", default=None, help="save the shrunk chat to this .json file")
+    p_shrink.set_defaults(func=cmd_shrink)
 
     args = parser.parse_args(argv)
     try:
