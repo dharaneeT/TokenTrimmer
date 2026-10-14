@@ -1,0 +1,14 @@
+[
+  {
+    "role": "system",
+    "content": "You are a helpful assistant."
+  },
+  {
+    "role": "user",
+    "content": "[Earlier conversation removed to save tokens: 2 messages, about 9,108 tokens]"
+  },
+  {
+    "role": "user",
+    "content": "Which line matters most?"
+  }
+]
