@@ -1,0 +1,5 @@
+[ollama]
+url = "http://127.0.0.1:11434"
+model = "qwen2.5-coder:3b"
+timeout_seconds = 120
+num_ctx = 4096
