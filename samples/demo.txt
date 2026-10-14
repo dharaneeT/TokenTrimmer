@@ -1,0 +1,22 @@
+### system
+You are a helpful coding assistant. Answer briefly.
+
+### user
+My app crashes when it starts. It should read config.toml from C:\app\config.toml.
+Here is my code:
+
+```python
+def load(path):
+    with open(path) as f:
+        return f.read()
+
+print(load("config.toml"))
+```
+
+The error is: FileNotFoundError: [Errno 2] No such file or directory: 'config.toml'
+
+### assistant
+The program looks for config.toml in the folder you start it from, not next to the script. Use an absolute path, or build the path from the script location with pathlib.
+
+### user
+Thanks. Can you show the fixed version?

@@ -1,0 +1,18 @@
+[
+  {
+    "role": "system",
+    "content": "You are a helpful coding assistant. Answer briefly."
+  },
+  {
+    "role": "user",
+    "content": "My app crashes when it starts. It should read config.toml from C:\\app\\config.toml.\nHere is my code:\n\n```python\ndef load(path):\n    with open(path) as f:\n        return f.read()\n\nprint(load(\"config.toml\"))\n```\n\nThe error is: FileNotFoundError: [Errno 2] No such file or directory: 'config.toml'"
+  },
+  {
+    "role": "assistant",
+    "content": "The program looks for config.toml in the folder you start it from, not next to the script. Use an absolute path, or build the path from the script location with pathlib."
+  },
+  {
+    "role": "user",
+    "content": "Thanks. Can you show the fixed version?"
+  }
+]
