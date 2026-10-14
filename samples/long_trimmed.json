@@ -1,0 +1,18 @@
+[
+  {
+    "role": "system",
+    "content": "You are a helpful assistant."
+  },
+  {
+    "role": "user",
+    "content": "Here is the full log:\nline 0: the server logged a warning about slow responses\nline 1: the server logged a warning about slow responses\nline 2: the server logged a warning about slow responses\nline 3: the server logged a warning about slow responses\nline 4: the server logged a warning about slow responses\nline 5: the server logged a warning about slow responses\nline 6: the server logged a warning about slow responses\nline 7: the server logged a warning about slow responses\nline 8: the server logged a warning about slow responses\nline 9: the server logged a warning about slow responses\nline 10: the server logged a warning about slow responses\nline 11: the server logged a warning about slow responses\nline 12: the server logged a warning about slow responses\nline 13: the server logged a warning about slow responses\nline 14: the server logged a warning about slow responses\nline 15: the server logged a warning about slow responses\nline 16: the server logged a warning about slow responses\nline 17: the server logged a warning about slow responses\nline 18: the server logged a warning about slow responses\nline 19: the server logged a warning about slow responses\nline 20: the server logged a warning about slow responses\nline 21: the server logged a warning about slow responses\nline 22: the server logged a warning about slow responses\nline 23: the server logged a warning about slow responses\nline 24: the server logged a warning about slow responses\nline 25: the server logged a warning about slow responses\nline 26: the server logged a warning about slow responses\nline 27: the server logged a warning about slow responses\nline 28: the server logged a warning about slow responses\nline 29: the server logged a warning about slow responses\nline 30:\n\n[... 8,405 tokens trimmed from the middle of this message ...]\n\n responses\nline 677: the server logged a warning about slow responses\nline 678: the server logged a warning about slow responses\nline 679: the server logged a warning about slow responses\nline 680: the server logged a warning about slow responses\nline 681: the server logged a warning about slow responses\nline 682: the server logged a warning about slow responses\nline 683: the server logged a warning about slow responses\nline 684: the server logged a warning about slow responses\nline 685: the server logged a warning about slow responses\nline 686: the server logged a warning about slow responses\nline 687: the server logged a warning about slow responses\nline 688: the server logged a warning about slow responses\nline 689: the server logged a warning about slow responses\nline 690: the server logged a warning about slow responses\nline 691: the server logged a warning about slow responses\nline 692: the server logged a warning about slow responses\nline 693: the server logged a warning about slow responses\nline 694: the server logged a warning about slow responses\nline 695: the server logged a warning about slow responses\nline 696: the server logged a warning about slow responses\nline 697: the server logged a warning about slow responses\nline 698: the server logged a warning about slow responses\nline 699: the server logged a warning about slow responses"
+  },
+  {
+    "role": "assistant",
+    "content": "Noted."
+  },
+  {
+    "role": "user",
+    "content": "Which line matters most?"
+  }
+]
